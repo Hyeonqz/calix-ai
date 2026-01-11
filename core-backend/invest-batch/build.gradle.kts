@@ -9,6 +9,9 @@ dependencies {
     // Spring Boot Starters
     implementation("org.springframework.boot:spring-boot-starter-batch")
     implementation("org.springframework.boot:spring-boot-starter-quartz")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa") // JPA
+    implementation("org.springframework.boot:spring-boot-starter-cache") // Spring cache
+    implementation("org.springframework.boot:spring-boot-starter-data-redis") // Spring Redis
 
     // Module Dependencies
     implementation(project(":invest-domain"))

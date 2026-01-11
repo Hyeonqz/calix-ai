@@ -12,7 +12,7 @@ repositories {
 }
 
 allprojects {
-    group = "io.github.Hyeonqz"
+    group = "io.github.hyeonqz"
     version = "1.0.0"
 
     repositories {

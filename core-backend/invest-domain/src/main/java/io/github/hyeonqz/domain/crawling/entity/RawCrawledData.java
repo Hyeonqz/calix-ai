@@ -1,7 +1,7 @@
-package io.github.Hyeonqz.domain.crawling.entity;
+package io.github.hyeonqz.domain.crawling.entity;
 
-import io.github.Hyeonqz.domain.common.BaseTimeEntity;
-import io.github.Hyeonqz.domain.crawling.enums.CrawlingStatus;
+import io.github.hyeonqz.domain.common.BaseTimeEntity;
+import io.github.hyeonqz.domain.crawling.enums.CrawlingStatus;
 import jakarta.persistence.*;
 import lombok.*;
 

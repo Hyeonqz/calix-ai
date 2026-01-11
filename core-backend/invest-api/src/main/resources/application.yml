@@ -31,9 +31,18 @@ spring:
     show-sql: true
     open-in-view: false
 
+  # spring cache 설정
+  cache:
+    type: redis
+  # redis 설정
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
 logging:
   level:
-    io.github.Hyeonqz: DEBUG
+    io.github.hyeonqz: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
   pattern:

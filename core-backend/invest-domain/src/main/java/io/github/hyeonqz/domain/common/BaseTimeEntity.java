@@ -1,4 +1,4 @@
-package io.github.Hyeonqz.domain.common;
+package io.github.hyeonqz.domain.common;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

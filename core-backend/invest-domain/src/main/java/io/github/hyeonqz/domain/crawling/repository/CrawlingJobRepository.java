@@ -1,7 +1,7 @@
-package io.github.Hyeonqz.domain.crawling.repository;
+package io.github.hyeonqz.domain.crawling.repository;
 
-import io.github.Hyeonqz.domain.crawling.entity.CrawlingJob;
-import io.github.Hyeonqz.domain.crawling.enums.JobStatus;
+import io.github.hyeonqz.domain.crawling.entity.CrawlingJob;
+import io.github.hyeonqz.domain.crawling.enums.JobStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

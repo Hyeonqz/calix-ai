@@ -1,4 +1,4 @@
-package io.github.Hyeonqz.domain.crawling.enums;
+package io.github.hyeonqz.domain.crawling.enums;
 
 /**
  * 크롤링 데이터 처리 상태

@@ -1,4 +1,4 @@
-package io.github.Hyeonqz.domain.config;
+package io.github.hyeonqz.domain.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
