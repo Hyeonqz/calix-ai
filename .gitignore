@@ -1,0 +1,23 @@
+# Java/Kotlin (core-backend)
+**/build/
+**/.gradle/
+**/bin/
+
+# Node/Next.js (web-client)
+**/node_modules/
+**/.next/
+**/out/
+
+# Python (ai-engine)
+**/__pycache__/
+**/.venv/
+**/venv/
+**/*.pyc
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
