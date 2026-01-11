@@ -1,7 +1,16 @@
+# Core Framework
 fastapi
 uvicorn[standard]
+pydantic-settings
+
+# External APIs & Data
 yfinance
 pandas
 langchain
 openai
-pydantic-settings
+
+# Testing
+pytest
+pytest-asyncio
+pytest-cov
+httpx

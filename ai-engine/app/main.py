@@ -1,25 +1,82 @@
-# ai-engine/app/main.py
-# 실행 가이드
-# $ uvicorn main:app --reload
-# $ uvicorn app.main:app --reload --port 8000
-from fastapi import FastAPI
-import yfinance as yf
+"""
+AI Engine Main Application.
 
-app = FastAPI()
+FastAPI application entry point with middleware, routers, and exception handlers.
 
+Running the application:
+    $ uvicorn app.main:app --reload --port 8000
+
+API Documentation:
+    - Swagger UI: http://localhost:8000/docs
+    - ReDoc: http://localhost:8000/redoc
+"""
+
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+
+from app.api.v1.router import api_router
+from app.config.settings import get_settings
+from app.core.errors import AIEngineException
+from app.core.logging import setup_logging
+from app.schemas.base import ErrorResponse
+
+# Setup logging
+setup_logging()
+
+# Get settings
+settings = get_settings()
+
+# Create FastAPI application
+app = FastAPI(
+    title=settings.app_name,
+    version=settings.app_version,
+    debug=settings.debug,
+    description="AI Engine for financial data analysis and prediction models"
+)
+
+# Add CORS middleware for Spring Boot server integration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.allowed_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+# Global exception handler for custom exceptions
+@app.exception_handler(AIEngineException)
+async def ai_engine_exception_handler(request: Request, exc: AIEngineException) -> JSONResponse:
+    """
+    Handle all AIEngineException and its subclasses.
+
+    Returns a standardized error response with 400 status code.
+    """
+    return JSONResponse(
+        status_code=400,
+        content=ErrorResponse(
+            success=False,
+            message=exc.message,
+            details=exc.details
+        ).model_dump()
+    )
+
+
+# Include API v1 router
+app.include_router(api_router, prefix=settings.api_v1_prefix)
+
+
+# Root endpoint (for backward compatibility)
 @app.get("/")
-def read_root():
-    return {"status": "AI Engine is running"}
+async def root() -> dict[str, str]:
+    """
+    Root endpoint for basic status check.
 
-
-@app.get("/stock/{ticker}")
-def get_stock_price(ticker: str):
-    # Java 개발자에게 익숙한 데이터 처리
-    stock = yf.Ticker(ticker)
-    price_info = stock.fast_info
-
+    For detailed health checks, use /api/v1/health endpoints.
+    """
     return {
-        "ticker": ticker,
-        "current_price": price_info.last_price,
-        "currency": price_info.currency
+        "status": "running",
+        "service": settings.app_name,
+        "version": settings.app_version
     }
