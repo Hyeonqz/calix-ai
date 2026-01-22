@@ -33,7 +33,7 @@ public class RawCrawledData extends BaseTimeEntity {
     /**
      * 크롤링 소스 URL
      */
-    @Column(name = "source_url", nullable = false, length = 2048)
+    @Column(name = "source_url", nullable = false, length = 255)
     private String sourceUrl;
 
     /**

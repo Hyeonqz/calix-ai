@@ -7,8 +7,8 @@ plugins {
 
 dependencies {
     // Spring Boot Starters
-    implementation("org.springframework.boot:spring-boot-starter-batch")
-    implementation("org.springframework.boot:spring-boot-starter-quartz")
+    implementation("org.springframework.boot:spring-boot-starter-batch") // batch
+    implementation("org.springframework.boot:spring-boot-starter-quartz")  // quartz
     implementation("org.springframework.boot:spring-boot-starter-data-jpa") // JPA
     implementation("org.springframework.boot:spring-boot-starter-cache") // Spring cache
     implementation("org.springframework.boot:spring-boot-starter-data-redis") // Spring Redis

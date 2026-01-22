@@ -17,6 +17,12 @@ spring:
       maximum-pool-size: 5
       minimum-idle: 2
 
+  datasource-quartz:
+    url: jdbc:mysql://localhost:3306/invest_calix?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:1234}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -36,21 +42,13 @@ spring:
       host: localhost
       port: 6379
 
-
-  batch:
-    jdbc:
-      initialize-schema: never
-    job:
-      enabled: false
-
+  # quartz 설정
   quartz:
     job-store-type: jdbc
     jdbc:
       initialize-schema: never
-    properties:
-      org.quartz.scheduler.instanceName: InvestBatchScheduler
-      org.quartz.scheduler.instanceId: AUTO
-      org.quartz.threadPool.threadCount: 5
+    data-source: quartz
+
 
 logging:
   level:
