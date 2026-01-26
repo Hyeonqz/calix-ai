@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 9000
   shutdown: graceful
 
 spring:
@@ -7,55 +7,3 @@ spring:
     active: local
   application:
     name: invest-api
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/invest_calix?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:1234}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 5
-      connection-timeout: 30000
-      idle-timeout: 600000
-      max-lifetime: 1800000
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.MySQL8Dialect
-        default_batch_fetch_size: 100
-    show-sql: true
-    open-in-view: false
-
-  # spring cache 설정
-  cache:
-    type: redis
-  # redis 설정
-  data:
-    redis:
-      host: localhost
-      port: 6379
-
-logging:
-  level:
-    io.github.hyeonqz: DEBUG
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,prometheus
-  endpoint:
-    health:
-      show-details: when-authorized
-  metrics:
-    tags:
-      application: ${spring.application.name}

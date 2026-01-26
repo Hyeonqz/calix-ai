@@ -1,3 +1,4 @@
+val springBootAdminVersion by extra("3.5.7")
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
@@ -13,6 +14,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa") // JPA
     implementation("org.springframework.boot:spring-boot-starter-cache") // Spring cache
     implementation("org.springframework.boot:spring-boot-starter-data-redis") // Spring Redis
+
+    // admin-client
+    implementation("de.codecentric:spring-boot-admin-starter-client")
 
     // Module Dependencies
     implementation(project(":invest-domain"))
@@ -30,4 +34,9 @@ tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
 
 tasks.named<Jar>("jar") {
     enabled = false
+}
+dependencyManagement {
+    imports {
+        mavenBom("de.codecentric:spring-boot-admin-dependencies:$springBootAdminVersion")
+    }
 }

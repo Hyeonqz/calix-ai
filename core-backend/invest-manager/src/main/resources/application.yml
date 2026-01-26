@@ -1,9 +1,9 @@
 server:
-  port: 9100
+  port: 9900
   shutdown: graceful
 
 spring:
   profiles:
     active: local
   application:
-    name: invest-batch
+    name: invest-manager

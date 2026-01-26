@@ -1,0 +1,39 @@
+spring:
+  security:
+    user:
+      name: ${ADMIN_USERNAME}
+      password: ${ADMIN_PASSWORD}
+
+  boot:
+    admin:
+      context-path: /admin
+      ui:
+        title: "Investment Service Monitor (DEV)"
+        brand: "Calix Investment"
+      monitor:
+        period: 30000
+        status-lifetime: 30000
+      instance-proxy:
+        ignored-headers:
+          - Cookie
+          - Set-Cookie
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+logging:
+  level:
+    io.github.hyeonqz.manager: INFO
+    de.codecentric.boot.admin: INFO
+    org.springframework.security: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
